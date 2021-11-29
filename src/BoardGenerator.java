@@ -4,7 +4,7 @@ import java.util.Random;
 
 
 //Note: Store all moves as [x,y]
-//TODO Draw method
+//TODO Draw method (luke)
 
 //array check code
 //        System.out.println(Arrays.toString(values[0]));
