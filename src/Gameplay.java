@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
@@ -15,6 +16,15 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         addMouseListener(this);
     }
 
+    public void paint(Graphics g) {
+        //background
+
+        //borders
+
+        //Header with score
+
+        //Tiles
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
@@ -25,6 +35,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     public void mouseClicked(MouseEvent e) {
         move1[0] = e.getX();
         move1[1] = e.getY();
+        System.out.println(Arrays.toString(move1));
 
     }
 
