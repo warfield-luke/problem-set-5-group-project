@@ -4,6 +4,12 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 //Note: Store all moves as [x,y]
+//TODO paint method
+//TODO expand mouseClicked with logic for recording two moves
+//TODO expand mouseClicked with logic to compare moves
+//TODO expand mouseClicked to update boards with new state
+//TODO add to keyPressed to restart game
+
 
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
     int[] move1 = new int[2];

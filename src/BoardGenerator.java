@@ -4,7 +4,6 @@ import java.util.Random;
 
 
 //Note: Store all moves as [x,y]
-//TODO Randomize positions of values within array (Better as 1D than 2D for this?)
 //TODO Draw method
 
 //array check code
