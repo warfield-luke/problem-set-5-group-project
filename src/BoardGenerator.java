@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import java.util.Random;
 //        System.out.println(Arrays.toString(values[1]));
 //        System.out.println(Arrays.toString(values[2]));
 //        System.out.println(Arrays.toString(values[3]));
-//        System.out.println("******************");
+//        System.out.println("*************");
 
 public class BoardGenerator {
     public int tileHeight;
@@ -46,12 +47,22 @@ public class BoardGenerator {
         }
 
         //Set tile width and height
-
-
+        tileHeight = (Main.HEIGHT - 100) / 4;
+        tileWidth = (Main.WIDTH - 100) / 4;
 
     }
 
-    public void draw() {}
+    public void draw(Graphics2D g) {
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[0].length; j++) {
+                if(values[i][j] > 0) {
+                    g.setColor(Color.green);
+                    //g.fillRect();
+
+                }
+            }
+        }
+    }
 
     public void match(int[] move1, int[] move2) {
         values[move1[1]][move1[0]] = 0;

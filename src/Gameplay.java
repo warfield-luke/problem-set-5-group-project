@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
-
 //Note: Store all moves as [x,y]
 
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
@@ -14,6 +13,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     public Gameplay() {
         board = new BoardGenerator();
         addMouseListener(this);
+
     }
 
     public void paint(Graphics g) {
