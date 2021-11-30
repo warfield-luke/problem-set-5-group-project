@@ -4,7 +4,6 @@ import java.util.Random;
 
 
 //Note: Store all moves as [x,y]
-//TODO Draw method (luke)
 
 //array check code
 //        System.out.println(Arrays.toString(values[0]));
@@ -46,7 +45,7 @@ public class BoardGenerator {
         }
 
         //Set tile width and height
-        tileHeight = (Main.HEIGHT - 100) / 4;
+        tileHeight = (Main.HEIGHT - 120) / 4;
         tileWidth = (Main.WIDTH - 100) / 4;
 
     }
@@ -54,10 +53,9 @@ public class BoardGenerator {
     public void draw(Graphics2D g) {
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
-                if(values[i][j] > 0) {
-                    g.setColor(Color.green);
-                    //g.fillRect();
-
+                if(values[i][j] != 0) {
+                    g.setColor(Color.black);
+                    g.fillRect((20 + (j * (tileWidth + 20))), (20 + (i * (tileHeight+ 20))), tileWidth, tileHeight);
                 }
             }
         }

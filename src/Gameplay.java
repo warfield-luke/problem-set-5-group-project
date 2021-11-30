@@ -30,6 +30,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         //Header with score
 
         //Tiles
+        board.draw((Graphics2D)g);
     }
 
     @Override
@@ -42,6 +43,9 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         move1[0] = e.getX();
         move1[1] = e.getY();
         System.out.println(Arrays.toString(move1));
+
+        repaint();
+
 
     }
 
