@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 
-//Note: Store all moves as [x,y]
-
 //array check code
 //        System.out.println(Arrays.toString(values[0]));
 //        System.out.println(Arrays.toString(values[1]));

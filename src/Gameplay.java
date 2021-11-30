@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
-//Note: Store all moves as [x,y]
 //Write your name next to the to-dos to claim them
 //TODO expand mouseClicked with logic for recording two moves
 //TODO expand mouseClicked with logic to compare moves
