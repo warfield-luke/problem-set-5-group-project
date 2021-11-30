@@ -8,7 +8,7 @@ import java.util.Arrays;
 //TODO expand mouseClicked with logic for recording two moves
 //TODO expand mouseClicked with logic to compare moves
 //TODO expand mouseClicked to update boards with new state
-//TODO add to keyPressed to restart game
+//TODO add to keyPressed to restart game (mostly done, verify all pertinent vars are reset)
 
 
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
@@ -20,6 +20,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     public Gameplay() {
         board = new BoardGenerator();
         addMouseListener(this);
+        addKeyListener(this);
+        setFocusable(true);
 
     }
 
@@ -39,6 +41,15 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
     @Override
     public void keyPressed(KeyEvent e) {
+
+        if(e.getKeyCode() == KeyEvent.VK_Y) {
+            score = 0;
+            BoardGenerator board = new BoardGenerator();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_N) {
+            System.exit(0);
+        }
+        repaint();
 
     }
 
