@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 public class Main {
     public static final int WIDTH = 700;
-    public static final int HEIGHT = 720;
+    public static final int HEIGHT = 770;
 
     public static void main(String[] args) {
         JFrame obj = new JFrame();

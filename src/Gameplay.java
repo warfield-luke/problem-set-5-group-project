@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 //Note: Store all moves as [x,y]
 //Write your name next to the to-dos to claim them
-//TODO paint method (luke)
 //TODO expand mouseClicked with logic for recording two moves
 //TODO expand mouseClicked with logic to compare moves
 //TODO expand mouseClicked to update boards with new state
@@ -16,6 +15,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     int[] move1 = new int[2];
     int[] move2 = new int[2];
     BoardGenerator board;
+    int score = 0;
 
     public Gameplay() {
         board = new BoardGenerator();
@@ -24,11 +24,14 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     }
 
     public void paint(Graphics g) {
+        Color backColor = new Color(53, 101, 77);
         //background
-
-        //borders
+        g.setColor(backColor);
+        g.fillRect(0, 0, Main.WIDTH, Main.HEIGHT);
 
         //Header with score
+        g.setColor(Color.white);
+        g.drawString("Score: " + score, 327, 35);
 
         //Tiles
         board.draw((Graphics2D)g);
