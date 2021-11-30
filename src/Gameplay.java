@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 //Note: Store all moves as [x,y]
-//TODO paint method
+//TODO paint method (luke)
 //TODO expand mouseClicked with logic for recording two moves
 //TODO expand mouseClicked with logic to compare moves
 //TODO expand mouseClicked to update boards with new state
@@ -52,34 +52,17 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
 //unused abstract methods
     @Override
-    public void keyReleased(KeyEvent e) {
-    }
-
+    public void keyReleased(KeyEvent e) {}
     @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
+    public void keyTyped(KeyEvent e) {}
     @Override
     public void actionPerformed(ActionEvent e) {}
-
-
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
+    public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
+    public void mouseExited(MouseEvent e) {}
 }
