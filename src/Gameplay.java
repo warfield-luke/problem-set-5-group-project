@@ -42,6 +42,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         if(e.getKeyCode() == KeyEvent.VK_Y) {
             score = 0;
+            clearMoves();
             BoardGenerator board = new BoardGenerator();
         }
         if(e.getKeyCode() == KeyEvent.VK_N) {
@@ -65,12 +66,14 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
                 //Verify move is unique from move1
                 if(!Arrays.equals(move1, move2)) {
                     BoardGenerator.setStateUp(move2);
+
                     moveCount--;
 
                     if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
                         BoardGenerator.match(move1, move2);
+                    }
+                    clearMoves();
                 }
-            }
 
         }
 
@@ -90,6 +93,11 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         move[1] = (move[1] - 70) / (BoardGenerator.tileHeight + 20);
 
         System.out.println(Arrays.toString(move));
+    }
+
+    public void clearMoves() {
+        move1 = null;
+        move2 = null;
     }
 
 
