@@ -2,9 +2,6 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
-//TODO Add code to draw method for showing "flipped" cards
-    //TODO Implement faceUp as condition for drawing cards
-
 
 //array check code
 //        System.out.println(Arrays.toString(values[0]));
@@ -17,7 +14,7 @@ public class BoardGenerator {
     public static int tileHeight;
     public static int tileWidth;
     public static int[][] values = new int[4][4];
-    public boolean[][] faceUp = new boolean[4][4];
+    public static boolean[][] faceUp = new boolean[4][4];
     Random r = new Random();
 
     public BoardGenerator() {
@@ -61,9 +58,19 @@ public class BoardGenerator {
         //draw tiles on JFrame
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
-                if(values[i][j] != 0) {
+                if(values[i][j] != 0 && !faceUp[i][j]) {
+                    //draw face down tiles
                     g.setColor(tileColor);
                     g.fillRect((20 + (j * (tileWidth + 20))), (70 + (i * (tileHeight+ 20))), tileWidth, tileHeight);
+                }
+                if(values[i][j] != 0 && faceUp[i][j]) {
+                    //draw face up tiles
+                    g.setColor(tileColor);
+                    g.fillRect((20 + (j * (tileWidth + 20))), (70 + (i * (tileHeight+ 20))), tileWidth, tileHeight);
+
+                    g.setColor(Color.black);
+                    g.drawString("" + values[i][j], 17 + (tileWidth/2) + (j * (tileWidth + 20)), 74 + (tileHeight/2) + (i * (tileHeight + 20)));
+
                 }
             }
         }
@@ -74,11 +81,11 @@ public class BoardGenerator {
         values[move2[1]][move2[0]] = 0;
     }
 
-    public void setStateUp(int x, int y) {
-        faceUp[y][x] = true;
+    public static void setStateUp(int[] move) {
+        faceUp[move[1]][move[0]] = true;
     }
-    public void setStateDown(int x, int y) {
-        faceUp[y][x] = false;
+    public static void setStateDown(int[] move) {
+        faceUp[move[1]][move[0]] = false;
     }
 
 

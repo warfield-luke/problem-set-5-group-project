@@ -55,15 +55,18 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     public void mouseClicked(MouseEvent e) {
         if (moveCount == 0) {
             getClick(move1, e);
+            BoardGenerator.setStateUp(move1);
 
             moveCount++;
 
         } else if (moveCount == 1) {
             getClick(move2, e);
 
+                //Verify move is unique from move1
                 if(!Arrays.equals(move1, move2)) {
-                    System.out.println("avocado");
+                    BoardGenerator.setStateUp(move2);
                     moveCount--;
+
                     if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
                         BoardGenerator.match(move1, move2);
                 }
@@ -79,6 +82,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         //Get coords of click
         move[0] = e.getX();
         move[1] = e.getY();
+
+        System.out.println(Arrays.toString(move));
 
         //convert pixel coords to array cords for tiles
         move[0] = (move[0] - 20) / (BoardGenerator.tileWidth + 20);
