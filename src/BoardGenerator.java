@@ -69,7 +69,7 @@ public class BoardGenerator {
         }
     }
 
-    public void match(int[] move1, int[] move2) {
+    public static void match(int[] move1, int[] move2) {
         values[move1[1]][move1[0]] = 0;
         values[move2[1]][move2[0]] = 0;
     }
