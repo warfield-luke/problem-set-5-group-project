@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 //Write your name next to the to-dos to claim them
-//TODO insert 1 second pause at line 75
 //TODO fix bug where clicking between tiles is a valid move
 //TODO remove diagnostic output and test cases
 
@@ -64,24 +63,25 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         } else if (moveCount == 1) {
             getClick(move2, e);
 
-                //Verify move is unique from move1
-                if(!Arrays.equals(move1, move2)) {
-                    BoardGenerator.setStateUp(move2);
-                    moveCount--;
-                    repaint();
+            //Verify move is unique from move1
+            if (!Arrays.equals(move1, move2)) {
+                BoardGenerator.setStateUp(move2);
+                moveCount--;
+                repaint();
 
-                    //PAUSE HERE
+                //PAUSE HERE
+                long start = System.currentTimeMillis();
+                while (start >= System.currentTimeMillis() - 1000) {
 
-//TODO uncomment once pause is working
-
-//                    if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
-//                        BoardGenerator.match(move1, move2);
-//                    }
-//                    else {
-//                        BoardGenerator.setStatesDown(move1, move2);
-//                    }
-//                    clearMoves();
                 }
+
+                if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
+                    BoardGenerator.match(move1, move2);
+                } else {
+                    BoardGenerator.setStatesDown(move1, move2);
+                }
+                clearMoves();
+            }
 
         }
 
