@@ -4,8 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 //Write your name next to the to-dos to claim them
-//TODO expand mouseClicked with logic to compare moves (luke)
-//TODO expand mouseClicked to update boards with new state
+//TODO expand mouseClicked to update boards with new state (faceUp)
 //TODO add to keyPressed to restart game (mostly done, verify all pertinent vars are reset)
 
 
@@ -60,8 +59,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             move1[1] = e.getY();
 
             //convert pixel coords to array cords for tiles
-            move1[0] = (move1[0] - 20) / BoardGenerator.tileWidth;
-            move1[1] = (move1[1] - 70) / BoardGenerator.tileHeight;
+            move1[0] = (move1[0] - 20) / (BoardGenerator.tileWidth + 20);
+            move1[1] = (move1[1] - 70) / (BoardGenerator.tileHeight + 20);
 
             System.out.println(Arrays.toString(move1));
             System.out.println(Arrays.toString(move2));
@@ -69,16 +68,28 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         } else if (moveCount == 1) {
             //get coords for move2
-            move2[0] = e.getX();
-            move2[1] = e.getY();
+            while(true) {
+                move2[0] = e.getX();
+                move2[1] = e.getY();
 
-            //convert pixel coords to array cords for tiles
-            move2[0] = (move2[0] - 20) / BoardGenerator.tileWidth;
-            move2[1] = (move2[1] - 70) / BoardGenerator.tileHeight;
+                //convert pixel coords to array cords for tiles
+                move2[0] = (move2[0] - 20) / (BoardGenerator.tileWidth + 20);
+                move2[1] = (move2[1] - 70) / (BoardGenerator.tileHeight + 20);
 
-            System.out.println(Arrays.toString(move1));
-            System.out.println(Arrays.toString(move2));
-            moveCount--;
+                System.out.println(Arrays.toString(move1));
+                System.out.println(Arrays.toString(move2));
+
+                if(!Arrays.equals(move1, move2)) {
+                    System.out.println("avocado");
+                    if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
+                        BoardGenerator.values[move1[1]][move1[0]] = 0;
+                        BoardGenerator.values[move2[1]][move2[0]] = 0;
+                        break;
+                }
+            }
+        }
+
+        moveCount--;
         }
 
         repaint();

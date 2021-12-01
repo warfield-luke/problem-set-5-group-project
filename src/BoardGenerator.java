@@ -40,6 +40,11 @@ public class BoardGenerator {
                     values[ty][tx] = temp;
                 }
             }
+            System.out.println(Arrays.toString(values[0]));
+            System.out.println(Arrays.toString(values[1]));
+            System.out.println(Arrays.toString(values[2]));
+            System.out.println(Arrays.toString(values[3]));
+            System.out.println("*************");
         }
 
         //Set tile width and height
