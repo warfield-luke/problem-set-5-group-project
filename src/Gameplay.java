@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 //Write your name next to the to-dos to claim them
-//TODO expand mouseClicked with logic for recording two moves
+//TODO expand mouseClicked with logic for recording two moves (luke)
 //TODO expand mouseClicked with logic to compare moves
 //TODO expand mouseClicked to update boards with new state
 //TODO add to keyPressed to restart game (mostly done, verify all pertinent vars are reset)
