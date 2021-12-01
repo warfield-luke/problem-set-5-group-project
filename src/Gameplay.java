@@ -2,10 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
+import java.util.Timer;
 
 //Write your name next to the to-dos to claim them
-//TODO expand mouseClicked to update boards with new state (faceUp)
+//TODO expand mouseClicked to reset faceUp after period of time between rounds
 //TODO add to keyPressed to restart game (mostly done, verify all pertinent vars are reset)
+//TODO remove diagnostic output and test cases
 
 
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
@@ -66,11 +68,17 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
                 //Verify move is unique from move1
                 if(!Arrays.equals(move1, move2)) {
                     BoardGenerator.setStateUp(move2);
-
                     moveCount--;
+                    repaint();
+
+                    //PAUSE HERE
+
 
                     if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
                         BoardGenerator.match(move1, move2);
+                    }
+                    else {
+                        BoardGenerator.setStatesDown(move1, move2);
                     }
                     clearMoves();
                 }
@@ -101,13 +109,14 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     }
 
 
+
 //unused abstract methods
+    @Override
+    public void actionPerformed(ActionEvent e) {}
     @Override
     public void keyReleased(KeyEvent e) {}
     @Override
     public void keyTyped(KeyEvent e) {}
-    @Override
-    public void actionPerformed(ActionEvent e) {}
     @Override
     public void mousePressed(MouseEvent e) {}
     @Override

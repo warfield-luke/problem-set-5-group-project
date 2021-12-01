@@ -84,8 +84,9 @@ public class BoardGenerator {
     public static void setStateUp(int[] move) {
         faceUp[move[1]][move[0]] = true;
     }
-    public static void setStateDown(int[] move) {
-        faceUp[move[1]][move[0]] = false;
+    public static void setStatesDown(int[] move1, int[] move2) {
+        faceUp[move1[1]][move1[0]] = false;
+        faceUp[move2[1]][move2[0]] = false;
     }
 
 
