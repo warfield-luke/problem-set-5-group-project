@@ -2,6 +2,9 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
+//TODO Add code to draw method for showing "flipped" cards
+    //TODO Implement faceUp as condition for drawing cards
+
 
 //array check code
 //        System.out.println(Arrays.toString(values[0]));
