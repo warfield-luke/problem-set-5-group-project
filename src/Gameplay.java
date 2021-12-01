@@ -60,15 +60,21 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             move1[1] = e.getY();
 
             //convert pixel coords to array cords for tiles
-            move1[0] = (move1[0] - 20) ; //divide by width and subtract bound
-            move1[1] = (move1[1] - 70) ;
+            move1[0] = (move1[0] - 20) / BoardGenerator.tileWidth;
+            move1[1] = (move1[1] - 70) / BoardGenerator.tileHeight;
 
             System.out.println(Arrays.toString(move1));
             System.out.println(Arrays.toString(move2));
             moveCount++;
+
         } else if (moveCount == 1) {
             move2[0] = e.getX();
             move2[1] = e.getY();
+
+            //convert pixel coords to array cords for tiles
+            move2[0] = (move2[0] - 20) / BoardGenerator.tileWidth;
+            move2[1] = (move2[1] - 70) / BoardGenerator.tileHeight;
+
             System.out.println(Arrays.toString(move1));
             System.out.println(Arrays.toString(move2));
             moveCount--;

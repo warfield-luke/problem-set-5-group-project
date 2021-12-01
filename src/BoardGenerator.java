@@ -11,8 +11,8 @@ import java.util.Random;
 //        System.out.println("*************");
 
 public class BoardGenerator {
-    public int tileHeight;
-    public int tileWidth;
+    public static int tileHeight;
+    public static int tileWidth;
     public static int[][] values = new int[4][4];
     public boolean[][] faceUp = new boolean[4][4];
     Random r = new Random();
