@@ -50,6 +50,7 @@ public class BoardGenerator {
 
     public void draw(Graphics2D g) {
         Color tileColor = new Color(103, 10, 10);
+        //draw tiles on JFrame
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
                 if(values[i][j] != 0) {
