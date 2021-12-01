@@ -72,14 +72,15 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
                     //PAUSE HERE
 
+//TODO uncomment once pause is working
 
-                    if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
-                        BoardGenerator.match(move1, move2);
-                    }
-                    else {
-                        BoardGenerator.setStatesDown(move1, move2);
-                    }
-                    clearMoves();
+//                    if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
+//                        BoardGenerator.match(move1, move2);
+//                    }
+//                    else {
+//                        BoardGenerator.setStatesDown(move1, move2);
+//                    }
+//                    clearMoves();
                 }
 
         }
