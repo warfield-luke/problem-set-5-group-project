@@ -54,30 +54,12 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     @Override
     public void mouseClicked(MouseEvent e) {
         if (moveCount == 0) {
-            //get coords for move1
-            move1[0] = e.getX();
-            move1[1] = e.getY();
+            getClick(move1, e);
 
-            //convert pixel coords to array cords for tiles
-            move1[0] = (move1[0] - 20) / (BoardGenerator.tileWidth + 20);
-            move1[1] = (move1[1] - 70) / (BoardGenerator.tileHeight + 20);
-
-            System.out.println(Arrays.toString(move1));
-            System.out.println(Arrays.toString(move2));
             moveCount++;
 
         } else if (moveCount == 1) {
-            //get coords for move2
-
-                move2[0] = e.getX();
-                move2[1] = e.getY();
-
-                //convert pixel coords to array cords for tiles
-                move2[0] = (move2[0] - 20) / (BoardGenerator.tileWidth + 20);
-                move2[1] = (move2[1] - 70) / (BoardGenerator.tileHeight + 20);
-
-                System.out.println(Arrays.toString(move1));
-                System.out.println(Arrays.toString(move2));
+            getClick(move2, e);
 
                 if(!Arrays.equals(move1, move2)) {
                     System.out.println("avocado");
@@ -91,6 +73,18 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         repaint();
 
+    }
+
+    public static void getClick(int[] move, MouseEvent e) {
+        //Get coords of click
+        move[0] = e.getX();
+        move[1] = e.getY();
+
+        //convert pixel coords to array cords for tiles
+        move[0] = (move[0] - 20) / (BoardGenerator.tileWidth + 20);
+        move[1] = (move[1] - 70) / (BoardGenerator.tileHeight + 20);
+
+        System.out.println(Arrays.toString(move));
     }
 
 
