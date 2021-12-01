@@ -68,7 +68,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         } else if (moveCount == 1) {
             //get coords for move2
-            while(true) {
+
                 move2[0] = e.getX();
                 move2[1] = e.getY();
 
@@ -81,14 +81,12 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
                 if(!Arrays.equals(move1, move2)) {
                     System.out.println("avocado");
+                    moveCount--;
                     if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
                         BoardGenerator.match(move1, move2);
-                        break;
                 }
             }
-        }
 
-        moveCount--;
         }
 
         repaint();
