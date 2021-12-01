@@ -2,11 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
-import java.util.Timer;
 
 //Write your name next to the to-dos to claim them
-//TODO expand mouseClicked to reset faceUp after period of time between rounds
-//TODO add to keyPressed to restart game (mostly done, verify all pertinent vars are reset)
+//TODO insert 1 second pause at line 75
 //TODO remove diagnostic output and test cases
 
 
