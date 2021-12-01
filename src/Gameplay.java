@@ -15,6 +15,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     int[] move2 = new int[2];
     BoardGenerator board;
     int score = 0;
+    int moveCount = 0;
 
     public Gameplay() {
         board = new BoardGenerator();
@@ -54,12 +55,26 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        move1[0] = e.getX();
-        move1[1] = e.getY();
-        System.out.println(Arrays.toString(move1));
+        if (moveCount == 0) {
+            move1[0] = e.getX();
+            move1[1] = e.getY();
+
+            //convert pixel coords to array cords for tiles
+            move1[0] = (move1[0] - 20) ; //divide by width and subtract bound
+            move1[1] = (move1[1] - 70) ;
+
+            System.out.println(Arrays.toString(move1));
+            System.out.println(Arrays.toString(move2));
+            moveCount++;
+        } else if (moveCount == 1) {
+            move2[0] = e.getX();
+            move2[1] = e.getY();
+            System.out.println(Arrays.toString(move1));
+            System.out.println(Arrays.toString(move2));
+            moveCount--;
+        }
 
         repaint();
-
 
     }
 
