@@ -96,8 +96,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     }
 
     public void clearMoves() {
-        move1 = null;
-        move2 = null;
+        move1 = new int[2];
+        move2 = new int[2];
     }
 
 
