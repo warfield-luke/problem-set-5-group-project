@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 //Write your name next to the to-dos to claim them
 //TODO insert 1 second pause at line 75
+//TODO fix bug where clicking between tiles is a valid move
 //TODO remove diagnostic output and test cases
 
 
