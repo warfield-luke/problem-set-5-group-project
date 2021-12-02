@@ -7,19 +7,27 @@ import java.util.Arrays;
 //TODO fix bug where clicking between tiles is a valid move
 //TODO remove diagnostic output and test cases
 
-
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
     int[] move1 = new int[2];
     int[] move2 = new int[2];
     BoardGenerator board;
     int score = 0;
     int moveCount = 0;
+    private Timer delayTimer;
 
     public Gameplay() {
         board = new BoardGenerator();
         addMouseListener(this);
         addKeyListener(this);
         setFocusable(true);
+        delayTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                System.out.println("delay");
+                repaint();
+            }
+        });
+        delayTimer.setRepeats(false);
 
     }
 
@@ -67,7 +75,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             if (!Arrays.equals(move1, move2)) {
                 BoardGenerator.setStateUp(move2);
                 moveCount--;
-                repaint();
+                delayTimer.start();
 
                 //PAUSE HERE
                 long start = System.currentTimeMillis();
