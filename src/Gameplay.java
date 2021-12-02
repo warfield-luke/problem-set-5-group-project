@@ -3,9 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
-//Write your name next to the to-dos to claim them
-//TODO fix bug where clicking between tiles is a valid move
-//TODO remove diagnostic output and test cases
 
 public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
     int[] move1 = new int[2];
@@ -13,6 +10,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     BoardGenerator board;
     int score = 0;
     int moveCount = 0;
+    boolean delaying = false;
     private Timer delayTimer;
 
     public Gameplay() {
@@ -20,12 +18,19 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         addMouseListener(this);
         addKeyListener(this);
         setFocusable(true);
-        delayTimer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                System.out.println("delay");
-                repaint();
+
+        //Timer to allow player time to see tile values
+        delayTimer = new Timer(1200, evt -> {
+
+            repaint();
+            if (BoardGenerator.testMatch(move1, move2)) {
+                BoardGenerator.match(move1, move2);
+            } else {
+                BoardGenerator.setStatesDown(move1, move2);
             }
+            clearMoves();
+            delaying = false;
+
         });
         delayTimer.setRepeats(false);
 
@@ -47,7 +52,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        //allows restart/close of game
         if(e.getKeyCode() == KeyEvent.VK_Y) {
             score = 0;
             clearMoves();
@@ -62,39 +67,30 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (moveCount == 0) {
-            getClick(move1, e);
-            BoardGenerator.setStateUp(move1);
+        if (!delaying) {
+            if (moveCount == 0) {
+                getClick(move1, e);
+                BoardGenerator.setStateUp(move1);
+                moveCount++;
 
-            moveCount++;
+            } else if (moveCount == 1) {
+                getClick(move2, e);
 
-        } else if (moveCount == 1) {
-            getClick(move2, e);
+                //Verify move is unique from move1
+                if (!Arrays.equals(move1, move2)) {
+                    BoardGenerator.setStateUp(move2);
+                    moveCount--;
 
-            //Verify move is unique from move1
-            if (!Arrays.equals(move1, move2)) {
-                BoardGenerator.setStateUp(move2);
-                moveCount--;
-                delayTimer.start();
-
-                //PAUSE HERE
-                long start = System.currentTimeMillis();
-                while (start >= System.currentTimeMillis() - 1000) {
-
+                    //showing player the tile values
+                    delaying = true;
+                    delayTimer.start();
                 }
 
-                if (BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]]) {
-                    BoardGenerator.match(move1, move2);
-                } else {
-                    BoardGenerator.setStatesDown(move1, move2);
-                }
-                clearMoves();
             }
 
+            repaint();
+
         }
-
-        repaint();
-
     }
 
     public static void getClick(int[] move, MouseEvent e) {
@@ -102,13 +98,12 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         move[0] = e.getX();
         move[1] = e.getY();
 
-        System.out.println(Arrays.toString(move));
+        //Prints coords of move: System.out.println(Arrays.toString(move));
 
         //convert pixel coords to array cords for tiles
         move[0] = (move[0] - 20) / (BoardGenerator.tileWidth + 20);
         move[1] = (move[1] - 70) / (BoardGenerator.tileHeight + 20);
 
-        System.out.println(Arrays.toString(move));
     }
 
     public void clearMoves() {

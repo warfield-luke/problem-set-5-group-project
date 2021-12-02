@@ -1,20 +1,12 @@
 import java.awt.*;
-import java.util.Arrays;
 import java.util.Random;
 
-
-//array check code
-//        System.out.println(Arrays.toString(values[0]));
-//        System.out.println(Arrays.toString(values[1]));
-//        System.out.println(Arrays.toString(values[2]));
-//        System.out.println(Arrays.toString(values[3]));
-//        System.out.println("*************");
 
 public class BoardGenerator {
     public static int tileHeight;
     public static int tileWidth;
-    public static int[][] values = new int[4][4];
-    public static boolean[][] faceUp = new boolean[4][4];
+    private static int[][] values = new int[4][4];
+    private static boolean[][] faceUp = new boolean[4][4];
     Random r = new Random();
 
     public BoardGenerator() {
@@ -40,11 +32,6 @@ public class BoardGenerator {
                     values[ty][tx] = temp;
                 }
             }
-            System.out.println(Arrays.toString(values[0]));
-            System.out.println(Arrays.toString(values[1]));
-            System.out.println(Arrays.toString(values[2]));
-            System.out.println(Arrays.toString(values[3]));
-            System.out.println("*************");
         }
 
         //Set tile width and height
@@ -77,7 +64,12 @@ public class BoardGenerator {
         }
     }
 
+    public static boolean testMatch(int[] move1, int[] move2) {
+        return BoardGenerator.values[move1[1]][move1[0]] == BoardGenerator.values[move2[1]][move2[0]];
+    }
+
     public static void match(int[] move1, int[] move2) {
+        //sets values to not display given cards
         values[move1[1]][move1[0]] = 0;
         values[move2[1]][move2[0]] = 0;
     }
