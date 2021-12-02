@@ -25,6 +25,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             repaint();
             if (BoardGenerator.testMatch(move1, move2)) {
                 BoardGenerator.match(move1, move2);
+                score += 10;
             } else {
                 BoardGenerator.setStatesDown(move1, move2);
             }
@@ -44,7 +45,8 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         //Header with score
         g.setColor(Color.white);
-        g.drawString("Score: " + score, 327, 35);
+        g.setFont(new Font("Gothic", Font.ITALIC, 40));
+        g.drawString("Score: " + score, 270, 40);
 
         //Tiles
         board.draw((Graphics2D)g);

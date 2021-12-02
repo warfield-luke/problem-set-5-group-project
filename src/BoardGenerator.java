@@ -42,6 +42,7 @@ public class BoardGenerator {
 
     public void draw(Graphics2D g) {
         Color tileColor = new Color(103, 10, 10);
+        Font outputFont = new Font("Gothic", Font.ITALIC, 40);
         //draw tiles on JFrame
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[0].length; j++) {
@@ -56,7 +57,7 @@ public class BoardGenerator {
                     g.fillRect((20 + (j * (tileWidth + 20))), (70 + (i * (tileHeight+ 20))), tileWidth, tileHeight);
 
                     g.setColor(Color.white); //setting colors of number values
-                    g.setFont(new Font("Gothic", Font.ITALIC, 40)); //change the font and size of letters
+                    g.setFont(outputFont); //change the font and size of letters
                     g.drawString("" + values[i][j], 5 + (tileWidth/2) + (j * (tileWidth + 20)), 85 + (tileHeight/2) + (i * (tileHeight + 20))); //place the position of the board
 
                 }
