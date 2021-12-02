@@ -68,8 +68,9 @@ public class BoardGenerator {
                     g.setColor(tileColor);
                     g.fillRect((20 + (j * (tileWidth + 20))), (70 + (i * (tileHeight+ 20))), tileWidth, tileHeight);
 
-                    g.setColor(Color.black);
-                    g.drawString("" + values[i][j], 17 + (tileWidth/2) + (j * (tileWidth + 20)), 74 + (tileHeight/2) + (i * (tileHeight + 20)));
+                    g.setColor(Color.white); //setting colors of number values
+                    g.setFont(new Font("Gothic", Font.ITALIC, 40)); //change the font and size of letters
+                    g.drawString("" + values[i][j], 5 + (tileWidth/2) + (j * (tileWidth + 20)), 85 + (tileHeight/2) + (i * (tileHeight + 20))); //place the position of the board
 
                 }
             }
