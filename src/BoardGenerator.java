@@ -33,6 +33,12 @@ public class BoardGenerator {
                 }
             }
         }
+        //ensure faceUp is set to false for restarts
+        for(int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                faceUp[i][j] = false;
+            }
+        }
 
         //Set tile width and height
         tileHeight = (Main.HEIGHT - 170) / 4;

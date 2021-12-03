@@ -12,6 +12,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
     int moveCount = 0;
     boolean delaying = false;
     private Timer delayTimer;
+    int tileCount = 16;
 
     public Gameplay() {
         board = new BoardGenerator();
@@ -26,6 +27,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             if (BoardGenerator.testMatch(move1, move2)) {
                 BoardGenerator.match(move1, move2);
                 score += 10;
+                tileCount -= 2;
             } else {
                 BoardGenerator.setStatesDown(move1, move2);
             }
@@ -50,6 +52,13 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
 
         //Tiles
         board.draw((Graphics2D)g);
+
+        if(tileCount == 0) {
+            g.setColor(Color.white);
+            g.setFont(new Font("Gothic", Font.ITALIC, 25));
+            g.drawString("You win! Play again? (y/n)", 190, 350);
+
+        }
     }
 
     @Override
@@ -57,8 +66,10 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
         //allows restart/close of game
         if(e.getKeyCode() == KeyEvent.VK_Y) {
             score = 0;
+            tileCount = 16;
             clearMoves();
             BoardGenerator board = new BoardGenerator();
+
         }
         if(e.getKeyCode() == KeyEvent.VK_N) {
             System.exit(0);
@@ -89,6 +100,7 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
                 }
 
             }
+
 
             repaint();
 
