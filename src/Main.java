@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.Arrays;
+//@contributor: Sehyun Kim
 
 public class Main {
     public static final int WIDTH = 700;
