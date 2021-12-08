@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.Arrays;
 
 
-public class Gameplay extends JPanel implements ActionListener, KeyListener, MouseListener {
+public class Gameplay extends JPanel implements MouseListener, ActionListener, KeyListener {
     int[] move1 = new int[2];
     int[] move2 = new int[2];
     BoardGenerator board;
@@ -68,7 +68,6 @@ public class Gameplay extends JPanel implements ActionListener, KeyListener, Mou
             score = 0;
             tileCount = 16;
             clearMoves();
-            BoardGenerator board = new BoardGenerator();
 
         }
         if(e.getKeyCode() == KeyEvent.VK_N) {
